@@ -10,12 +10,14 @@ public class varible_Practice extends OpMode {
         int team_Number = 21537;
         double motor_Speed =0.75;
         boolean claw_Closed = true;
+        String name = "team charcole";
+        int motor_Angle = 90;
 
         telemetry.addData("team number", team_Number);
         telemetry.addData("motor speed", motor_Speed);
         telemetry.addData("claw closed", claw_Closed);
-        String name = "team charcole";
-        telemetry.addData("belongs to team cha", name);
+        telemetry.addData("belongs to", name);
+        telemetry.addData("motor angle", motor_Angle);
     }
 
     @Override
