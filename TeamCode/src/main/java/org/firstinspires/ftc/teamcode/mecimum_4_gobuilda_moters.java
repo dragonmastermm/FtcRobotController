@@ -17,7 +17,7 @@ public class mecimum_4_gobuilda_moters extends OpMode {
     private double rotate;{
 
         strafe = gamepad1.left_stick_x;
-        forward = -gamepad1.left_stick_y; // Invert Y axis
+        forward = gamepad1.left_stick_y;
         rotate = gamepad1.right_stick_x;
         mecanumDrive(strafe, forward, rotate);
     }
@@ -48,10 +48,10 @@ public class mecimum_4_gobuilda_moters extends OpMode {
 
 
     public void mecanumDrive(double strafe, double forward, double rotate) {
-        double frontLeftPower = forward + strafe + rotate;
-        double backLeftPower = forward - strafe + rotate;
-        double frontRightPower = forward - strafe - rotate;
-        double backRightPower = forward + strafe - rotate;
+        double frontLeftPower = (-forward) + strafe + rotate;
+        double backLeftPower = (-forward) - strafe + rotate;
+        double frontRightPower = (-forward) - strafe - rotate;
+        double backRightPower = (-forward) + strafe - rotate;
 
         // Normalize the wheel speeds
         double maxPower = Math.max(Math.abs(frontLeftPower), Math.max(Math.abs(backLeftPower),
