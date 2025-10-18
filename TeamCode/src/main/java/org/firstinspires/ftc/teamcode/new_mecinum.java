@@ -19,7 +19,6 @@ public class new_mecinum extends OpMode {
     public void init() {
 
         shooterLeft = hardwareMap.get(DcMotor.class, "shooterLeft");
-
         intake = hardwareMap.get(DcMotor.class, "intake");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
@@ -47,16 +46,16 @@ public class new_mecinum extends OpMode {
 
         if (gamepad1.left_bumper) {
             intake.setPower(1.0); // Intake in
+
         } else {
             intake.setPower(0); // Stop intake
+
         }
 
         if (gamepad1.right_bumper) {
-
             shooterLeft.setPower(1.0); // Shooter on
 
         } else {
-
             shooterLeft.setPower(0); // Shooter off
 
         }
