@@ -2,9 +2,11 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class new_mecinum extends OpMode {
 
+    private DcMotor shooterLeft;
     private DcMotor intake;
     private DcMotor frontLeft;
     private DcMotor frontRight;
@@ -14,11 +16,14 @@ public class new_mecinum extends OpMode {
     @Override
     public void init() {
 
+        shooterLeft = hardwareMap.get(DcMotor.class, "shooterLeft");
+
         intake = hardwareMap.get(DcMotor.class, "intake");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
+        shooterLeft.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
     @Override
@@ -38,12 +43,20 @@ public class new_mecinum extends OpMode {
         backLeft.setPower(backLeftPower);
         backRight.setPower(backRightPower);
 
-        if (gamepad1.a) {
+        if (gamepad1.left_bumper) {
             intake.setPower(1.0); // Intake in
-        } else if (gamepad1.b) {
-            intake.setPower(-1.0); // Intake out
         } else {
             intake.setPower(0); // Stop intake
+        }
+
+        if (gamepad1.right_bumper) {
+
+            shooterLeft.setPower(1.0); // Shooter on
+
+        } else {
+
+            shooterLeft.setPower(0); // Shooter off
+
         }
 
     }
